@@ -92,7 +92,7 @@ class ArrayFormField(forms.Field):
 
     def prepare_value(self, value):
         if value:
-            return self.delim.join(value)
+            return self.delim.join(map(str, value))
         else:
             return super(ArrayFormField, self).prepare_value(value)
 
