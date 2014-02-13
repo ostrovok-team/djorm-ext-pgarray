@@ -96,6 +96,7 @@ class ArrayFormField(forms.Field):
         else:
             return super(ArrayFormField, self).prepare_value(value)
 
-
     def to_python(self, value):
-        return value.split(self.delim)
+        if hasattr(value, 'split'):
+            return value.split(self.delim)
+        return value
